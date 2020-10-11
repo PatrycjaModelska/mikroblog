@@ -1,0 +1,57 @@
+{% extends "index/index_wyszukiwanie.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="container" style="margin-top:30px">
+        <h2>Wyniki wyszukiwania ({{ paginator.count }}):</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="container" style="margin-top:30px">
+    {% for post in posts %}
+        <div class="container">
+        <h6 class="card-subtitle mb-2 text-muted">{{ post.publication_date|date:"j F Y" }}</h6>
+        <h5 class="card-title"><a href="{% url 'Post_detail' pk=post.id %}">{{ post.title }}</a></h5>
+        <p class="card-text">{{ post.short|safe }} 
+        <a href="{% url 'Post_detail' pk=post.id %}" class="card-link">Czytaj dalej...</a></p>
+        <h6 class="card-subtitle mb-2 text-muted">{{ post.id_author }} </h6>
+        <br>
+        </div>
+     {% endfor %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="container" style="margin-top:30px">
+        {% if is_paginated %}
+        <ul class="pagination justify-content-center">
+
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+                <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a></li>
+            {% endif %}
+
+
+            {% for i in paginator.page_range %}
+              {% if page_obj.number == i %}
+                <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+
+
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% else %}
+                <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">&raquo;</a></li>
+            {% endif %}
+
+        </ul>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock%}

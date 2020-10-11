@@ -1,0 +1,41 @@
+{% extends 'index/index.html' %}
+    {% block content_index%}
+
+{% if user.is_authenticated %}
+<div class="row">
+    <div class="container" style="margin-top:30px">
+        <h2>Edytuj swoje dane</h2>
+    </div>
+</div>
+
+<div class="row">
+ <div class="container" style="margin-top:30px">
+
+	<form method="post">
+	    {% csrf_token %}
+	    {% for field in form %}
+					<div class="field">
+						<h6> {{field.label_tag}}</h6>
+						<div class ="control">
+			    			{{ field }}
+			    			{{ form.media }}
+			    		</div>
+			    	</div>
+			    	<br>
+		{% endfor %}
+
+
+	    <button class = "btn btn-primary" type="submit">Zapisz zmiany</button>
+	</form>
+	</div>
+</div>
+
+{% else %}
+<div class="row">
+    <div class="container" style="margin-top:30px; margin-bottom: 30px">
+        <p>Nie jesteś zalogowany!</p>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

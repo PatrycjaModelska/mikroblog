@@ -1,0 +1,40 @@
+{% extends 'index/index.html' %}
+{% block content_index%}
+
+<div class="container" style="margin-top:30px">
+    <div class="row">
+
+        <div class="col-lg-8">
+            <div class="container">
+                {% if post.publication_date %}
+                    <div class="date">
+                        {{ post.publication_date|date }}
+                    </div>
+                 {%endif%}
+
+                 <h2>{{ post.title }}
+                 {% if user.is_authenticated and user == post.id_author %}
+                    <a class="btn btn-primary" href="{% url 'Post_edit' pk=post.pk%}" role="button">Edytuj</a>
+                    <a class="btn btn-danger" href="{% url 'Post_delete' pk=post.pk%}" role="button">Usuń</a>
+                {% endif %}
+            	</h2>
+                <p>{{ post.contents| safe }}</p>
+                <p>Autor: <b>{{ post.id_author }}</b></p>
+            </div>
+        </div>
+
+        <div class="col-lg-4" >
+            <div class="container">
+            	<h5>Dodaj komentarz</h5> 
+				<form method="POST" class="post-form">{% csrf_token %}
+				    {{ form.as_p }}
+				    <button class = "btn btn-primary" type="submit">Wyślij</button>
+				</form>
+			</div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

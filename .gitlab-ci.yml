@@ -1,0 +1,33 @@
+stages:
+  - build
+  - test
+  - deploy
+
+image: python
+
+before_script:
+  - pip install -r requirements.txt
+
+
+app build:
+  stage: build
+  script:
+    - python manage.py migrate
+    - python manage.py runserver &
+    - sleep 15
+    - curl localhost:8000/ >> output.txt
+    - grep "Serwis do mikroblogowania" output.txt
+
+app test:
+  stage: test
+  script:
+    - python manage.py test
+
+
+app deploy heroku:
+  stage: deploy
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
