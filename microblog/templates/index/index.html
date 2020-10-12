@@ -43,9 +43,6 @@
             <a class="nav-link" href="{% url 'Post_add'%}">Dodaj post</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'My_account' username=request.user%}">Zarządzaj kontem</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="{% url 'Post_manager' %}">Zarządzaj postami</a>
           </li>
           <li class="nav-item">
@@ -55,7 +52,7 @@
             <a class="nav-link" href="{% url 'Top_posts'%}">Top 5</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-dark" href="{% url 'Logout' %}" role="button">Wyloguj</a>
+            <a class="nav-link" href="{% url 'Logout'%}">Wyloguj</a>
           </li>
       </ul>
         {% else %}

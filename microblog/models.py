@@ -4,7 +4,7 @@ from ckeditor.fields import RichTextField
 from django.contrib.contenttypes.fields import GenericRelation
 
 from star_ratings.models import Rating
-from users.models import Users
+# from users.models import Users
 
 
 class BlogCategory(models.Model):
@@ -19,7 +19,7 @@ class BlogCategory(models.Model):
 
 
 class Post(models.Model):
-    id_author = models.ForeignKey(Users, on_delete=models.DO_NOTHING, verbose_name='Autor')
+    id_author = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING, verbose_name='Autor')
     category = models.ManyToManyField(BlogCategory, verbose_name='Kategorie', blank=True)
     tag = models.CharField('Tagi', max_length=50, blank=True)
     title = models.CharField('Tytuł', max_length=100)

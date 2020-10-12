@@ -28,12 +28,8 @@ from microblog.views import (Microblog_about,
                              Top5,
                              TitleContextSerching,
                              CategorySerching, )
-from users.views import (user_login,
-                         user_logout,
-                         registration,
-                         MyAccount,
-                         EditAccount,
-                         change_password, )
+from users.views import registration, user_login, user_logout
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,9 +39,8 @@ urlpatterns = [
     path('logowanie/', user_login, name='Login'),
     path('wylogowanie/', user_logout, name='Logout'),
     path('rejestracja/', registration, name='Registration'),
-    path('mojekonto/<str:username>', MyAccount.as_view(), name='My_account'),
-    path('mojekonto/zmianahasla/', change_password, name='Change_password'),
-    path('mojekonto/edytujdane/<int:pk>', EditAccount.as_view(), name='Edit_account'),
+
+
 
     # mikroblog app
     path('about/', Microblog_about, name='Microblog_about'),

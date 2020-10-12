@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'mikroblog-demo.herokuapp.com']
 
@@ -143,6 +143,3 @@ STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static'),)
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-LOGIN_URL = '/dappx/user_login/'
-AUTH_USER_MODEL = "users.Users"
