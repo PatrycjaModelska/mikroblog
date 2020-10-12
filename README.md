@@ -1,4 +1,5 @@
-#Serwis do mikroblogowania
+# Serwis do mikroblogowania
+
     Celem projektu było utworzenie serwisu do mikroblogowania.
     Aplikacja utrwala materiał z zakresu Django.
 
