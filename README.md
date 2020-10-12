@@ -1,46 +1,17 @@
 #Serwis do mikroblogowania
-    Celem projektu jest utworzenie srrwisu do zakładania oraz przeglądania mikroblogów.
-    Jest to aplikacja utrwalająca materiał z zakresu django.
+    Celem projektu było utworzenie serwisu do mikroblogowania.
+    Aplikacja utrwala materiał z zakresu Django.
 
 ### O projekcie
-    Microblog jest serwisem do tworzenia mikroblogów. 
-    Dostępne moduły:
-    1. Rejestracja:
-        Przy rejestracji użytkownik podaje imię, nazwisko, username, email, hasło oraz avatar
-        Pola obiwiązkowe to username, eamil oraz hasło.Pozostałe pola opcjonalne
-    2. Logowanie/Wylogowanie
-        Pierwsze logowanie następuje w opcji rejestracja, każde kolejne po podaniu username i hasła. Dane do logowania są walidowane pod kątem ich poprawności
-        Wylogowanie po wciśnięciu przycisku "logout"
-    3. Dodawanie postów:
-        Opcja dostępna tylko dla zalogowanych użytkowników po wybraniu przycisku 'Dodaj post'
-        Edycji postu może dokonywac jedynie autor postu. Opcja usuwania dostępna tylko dla administratora i autora
-        Dostępne pola:
-            autor - pole wypełniane automatycznie, pobierana wartość "username" zalogowanego użytkonika
-            kategoria - pole wyboru, wartość pobierana z tablicy "BlogCategory"
-            tagi - pole tekstowe, opcjonalnie uzupełniane przez użytkownika, do 50 znaków
-            tytuł - pole tekstowe, obowiązkowo uzupełniane przez użytkownika, do 100 znaków
-            skrót - pole tekstowe, obowiązkowo uzupełniane przez użytkownika, do 300 znaków
-            pełna treść- pole pozwalające na dodanie teksty i obrazu, obowiązkowo wypełniane przez użytkownika, 
-            data utworzenia - pole typu timestamp - uzupełniane automatycznie czasem utworzenia post
-            data publikacji - pole typu timestamp, opcjonalnie uzpełniane przez użytkonika
-            przycisk wyślij - dodaje post do bazy oraz wysyła na stronę główną 
-            przycisk zapisz - dodaje post do bazy  
-    4. Dodawanie komentarzy
-        Opcja dostępna dla każdego użytkownika, pole aktywne po otawrciu posta. Opcja usuwania komentarzy dostępna tylko dla administratora
-        Pole komentarza jest polem tekstowym o długości do 500 znaków
-    5. Przeglądanie postów
-        opcja dostępna dla każdego użytkownika. 
-        Tytuł oraz skrót dostępne na stronie głównej oraz w oknie kategorii postów. Widok pełny z pełną treścią oraz komentarzami widoczy po wejściu w okno postu
-        Dostępne pole wyboru kategorii, które przekierowuje do okna z postami w wybranej kategorii
-        # poza mvp -Użytkownik ma możliwość wyszukiwania postów po tytule, autorze
+    Dostępne funkcjonalności:
+    1. Rejestracja/logowanie/wylogowanie.
+    2. Wyszukiwanie postów (po treści/tytule, po autorze, według kategorii).
+    3. Dodawanie komentarzy.
+    4. Dodwanie postów.
+    5. Zarządzanie postami (edycja, usuwanie).
+    6. Ocenianie postów (przyznawanie punktów w skali od 1 do 5).
 
-### Autorzy
-    * Żaneta
-    * Patrycja
-    * Dawid
-
-### Wymagania
-    Wszystkie niezbędne pliki konieczne do uruchomienia projektu zostały umieszczone w pliku requirements.txt.
+    Funckjonalności 4-6 dostępne są jedynie dla zalogowanych użytkowników. 
 
 ### Uruchomienie projektu 
     1. Wymagania sprzętowe:
@@ -60,7 +31,7 @@
     
             pip install -r requirements.txt.
     
-    5. Utworzenie superuser:
+    5. Utworzenie super użytkownika:
     
             python manage.py createsuperuser
     
@@ -72,3 +43,11 @@
     7. Uruchomienie serwera:
     
             python mamage.py runserver
+            
+            
+### Wersja demo
+    Możesz pominąć krok ze ściąganiem repozytorium i przejść do wersji demo:
+    https://mikroblog-demo.herokuapp.com/
+
+### Autorzy
+    Patrycja, Żaneta, Dawid
