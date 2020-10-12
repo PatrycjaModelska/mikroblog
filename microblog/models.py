@@ -28,6 +28,7 @@ class Post(models.Model):
     created_date = models.DateTimeField('Data utworzenia', default=timezone.now)
     publication_date = models.DateTimeField('Data publikacji', blank=True, null=True)
     rating = GenericRelation(Rating, related_query_name="posts")
+    active = models.BooleanField('Aktywny', default=False, null=True)
 
     class Meta:
         verbose_name = "Post"

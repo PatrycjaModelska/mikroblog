@@ -24,7 +24,7 @@ class PostList(ListView):
     ordering = ['-created_date']
 
     def get_queryset(self):
-        posts = Post.objects.filter(id_author__username="admin").order_by('-created_date')
+        posts = Post.objects.filter(active=True).order_by('-created_date')
         return posts
 
     def get_context_data(self, **kwargs):
